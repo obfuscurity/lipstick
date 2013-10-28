@@ -1,1 +1,8 @@
 body { padding-top: 70px; }
+
+.navbar-header { font-weight: bold; }
+
+h1 {
+  font-size: 4.0em;
+  font-weight: 100;
+}
