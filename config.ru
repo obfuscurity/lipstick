@@ -3,6 +3,11 @@ $LOAD_PATH << './lib'
 require 'radial/web'
 run Radial::Web
 
+# allow user to set SSL_VERSION explicitly
+if ENV['SSL_VERSION']
+  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:ssl_version] = ENV['SSL_VERSION']
+end
+
 begin
   uri = URI.parse(ENV['MONGODB_URI'])
 rescue
