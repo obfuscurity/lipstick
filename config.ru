@@ -3,6 +3,8 @@ require 'radial/web'
 
 run Radial::Web
 
+MongoMapper.setup({ 'production' => { 'uri' => ENV['MONGODB_URI'] } }, 'production')
+
 Events.load unless ENV['EVENTS_UPDATE_ON_BOOT'] == 'false'
 
 require 'rufus/scheduler'

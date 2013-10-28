@@ -1,8 +1,12 @@
 require 'sinatra'
 require 'rack-ssl-enforcer'
 require 'nagiosharder'
+require 'mongo_mapper'
 require 'json'
 require 'uri'
+
+require 'radial/models/sites'
+require 'radial/models/events'
 
 module Radial
   class Web < Sinatra::Base
