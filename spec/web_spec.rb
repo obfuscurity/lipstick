@@ -1,13 +1,13 @@
 require 'rack/test'
 require 'spec_helper'
 
-require 'radial/web'
+require 'lipstick/web'
 
-describe Radial::Web do
+describe Lipstick::Web do
   include Rack::Test::Methods
 
   def app
-    Radial::Web
+    Lipstick::Web
   end
 
   describe 'GET /' do

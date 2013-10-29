@@ -5,10 +5,10 @@ require 'mongo_mapper'
 require 'json'
 require 'uri'
 
-require 'radial/models/sites'
-require 'radial/models/events'
+require 'lipstick/models/sites'
+require 'lipstick/models/events'
 
-module Radial
+module Lipstick
   class Web < Sinatra::Base
 
     configure do

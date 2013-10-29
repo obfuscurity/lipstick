@@ -1,7 +1,7 @@
 $LOAD_PATH << './lib'
 
-require 'radial/web'
-run Radial::Web
+require 'lipstick/web'
+run Lipstick::Web
 
 # allow user to set SSL_VERSION explicitly
 if ENV['SSL_VERSION']

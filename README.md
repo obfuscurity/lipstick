@@ -1,15 +1,15 @@
-Radial
-======
+Lipstick
+========
 
 ## Overview
 
-Radial is a unified dashboard for collecting and presenting Nagios activity across multiple sites. It uses a MongoDB database for storing Nagios site configuration and event data.
+Lipstick is a unified dashboard for collecting and presenting Nagios activity across multiple sites. It uses a MongoDB database for storing Nagios site configuration and event data.
 
 ## Usage
 
 ## Deployment
 
-Radial supports a number of _optional_ environment variables. These can be set explicitly in the environment or in an `.env` file, supported by [Foreman](http://ddollar.github.io/foreman/#ENVIRONMENT).
+Lipstick supports a number of _optional_ environment variables. These can be set explicitly in the environment or in an `.env` file, supported by [Foreman](http://ddollar.github.io/foreman/#ENVIRONMENT).
 
 * `MONGODB_URI` - MongoDB connection string URI and database name. Defaults to `mongodb://127.0.0.1:27017/development`.
 * `EVENTS_UPDATE_ON_BOOT` - If set to `false`, disables the default behavior of loading all Nagios events into cache at startup.
@@ -40,5 +40,5 @@ $ heroku open
 
 ## License 
 
-Radial is distributed under the MIT license.
+Lipstick is distributed under the MIT license.
 
