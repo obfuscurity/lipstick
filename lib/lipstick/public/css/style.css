@@ -2,6 +2,12 @@ body { padding-top: 70px; }
 
 .navbar-header { font-weight: bold; }
 
+div.not_found {
+  background-image: url('/img/lipstick-pig.jpg');
+  background-repeat: no-repeat;
+  height: 600px;
+}
+
 h1 {
   font-size: 4.0em;
   font-weight: 100;
