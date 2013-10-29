@@ -39,7 +39,7 @@ module Lipstick
         Site.all.to_json
       else
         status 200
-        erb :sites, :locals => {}
+        erb :sites, :locals => { :sites => Site.all }
       end
     end
 
