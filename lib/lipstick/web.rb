@@ -45,7 +45,7 @@ module Lipstick
         status 200
         Site.all.to_json
       else
-        redirect '/405'
+        redirect '/404'
       end
     end
   end
