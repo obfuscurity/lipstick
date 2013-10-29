@@ -30,7 +30,7 @@ Site.update_all unless ENV['EVENTS_UPDATE_ON_BOOT'] == 'false'
 require 'rufus/scheduler'
 scheduler = Rufus::Scheduler.new
 
-interval = ENV['EVENTS_UPDATE_TIMEOUT'].nil? ? 60 : ENV['EVENTS_UPDATE_TIMEOUT'].to_i
+interval = ENV['EVENTS_UPDATE_INTERVAL'].nil? ? 60 : ENV['EVENTS_UPDATE_INTERVAL'].to_i
 
 scheduler.every interval do
   Site.update_all
