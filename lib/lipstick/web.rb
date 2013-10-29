@@ -33,7 +33,7 @@ module Lipstick
     end
 
     get '/sites/?' do
-      if request.accept? 'application/json'
+      if request.xhr?
         content_type 'application/json'
         status 200
         Site.all.to_json
@@ -44,7 +44,7 @@ module Lipstick
     end
 
     post '/sites/?' do
-      if request.accept? 'application/json'
+      if request.xhr?
         content_type 'application/json'
         status 200
         Site.all.to_json
