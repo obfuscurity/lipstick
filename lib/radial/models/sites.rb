@@ -10,8 +10,8 @@ class Site
   def self.update_all
     Site.all.each do |site|
       nagios = NagiosHarder::Site.new("#{site.url}/cgi-bin/", ENV['NAGIOS_USER'], ENV['NAGIOS_PASS'])
-      site.events.clear unless site.events.empty?
       begin
+        site.events.clear unless site.events.empty?
         nagios.service_status(:critical).each do |event|
           e = Event.new(event.to_hash)
           site.events << e
