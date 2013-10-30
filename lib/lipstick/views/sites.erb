@@ -1,9 +1,10 @@
     <div class="container">
       <h1>Nagios Sites</h1>
-      <ul>
-      <% sites.each do |site| %>
-        <li><a href="<%= site.url %>"><%= site.name %></a></li>
-      <% end %>
-      </ul>
     </div>
+    <script type="text/javascript">
+      var allSiteData = <%= sites.to_json %>
+    </script>
+    <script src="/js/common.js" type="text/javascript"></script>
     <script src="/js/sites.js" type="text/javascript"></script>
+    <div class="container sites">
+    </div>
