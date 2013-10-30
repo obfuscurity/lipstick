@@ -16,8 +16,8 @@ class Site
           site.events << Event.new(problem.to_hash)
         end
         site.save
-      rescue
-        raise "Unable to retrieve status for site #{site.name} at #{site.url}"
+      rescue => e
+        raise "Unable to retrieve status for site #{site.name} at #{site.url}: #{e.message}"
       end
     end
   end
