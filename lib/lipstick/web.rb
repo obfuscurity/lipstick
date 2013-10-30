@@ -52,5 +52,10 @@ module Lipstick
         redirect '/404'
       end
     end
+
+    get '/events/?' do
+      status 200
+      erb :events, :locals => { :sites => Site.all }
+    end
   end
 end
