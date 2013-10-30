@@ -17,7 +17,14 @@ class Site
         end
         site.save
       rescue => e
-        raise "Unable to retrieve status for site #{site.name} at #{site.url}: #{e.message}"
+        raise "Unable to retrieve service_status for site #{site.name} at #{site.url}: #{e.message}"
+      end
+      begin
+        nagios.host_status(:critical).each do |problem|
+          p problem
+        end
+      rescue => e
+        raise "Unable to retrieve host_status for site #{site.name} at #{site.url}: #{e.message}"
       end
     end
   end
