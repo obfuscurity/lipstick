@@ -1,3 +1,26 @@
-    <div class="container">
-      <h1>Welcome to Lipstick</h1>
-    </div>
+
+      <script type="text/x-handlebars" data-template-name="application">
+        <div class="container">
+          <h1>Welcome to Lipstick</h1>
+        </div>
+        {{ outlet }}
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="sites">
+        <div class="container">
+          <h3>Hello from sites template</h3>
+          {{#each site in controller}}
+          <div class="col-md-2 col-sm-3 col-xs-4 site">
+            <h4>{{ site.name }}</h4>
+            <h5>{{ site.events.length }}
+          </div>
+          {{/each}}
+        </div>
+        {{ outlet }}
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="sites/show">
+        <h4>Hello from sites-show template {{ id }}</h4>
+        {{ name }}
+        {{ url }}
+      </script>
