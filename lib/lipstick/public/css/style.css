@@ -9,3 +9,10 @@ h1 {
   font-size: 4.0em;
   font-weight: 100;
 }
+
+div.site {
+  border: 5px solid #fff;
+  border-radius: 10px;
+  background-color: rgba(0, 128, 0, 0.5);
+  min-height: 125px;
+}
