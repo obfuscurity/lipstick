@@ -8,11 +8,10 @@
 
       <script type="text/x-handlebars" data-template-name="sites">
         <div class="container">
-          <h3>Hello from sites template</h3>
           {{#each site in controller}}
           <div class="col-md-2 col-sm-3 col-xs-4 site">
-            <h4>{{ site.name }}</h4>
-            <h5>{{ site.events.length }}
+            <span class="name">{{ site.name }}</span>
+            <span class="events count">{{ site.events.length }}</span>
           </div>
           {{/each}}
         </div>
