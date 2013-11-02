@@ -31,9 +31,6 @@ div.site {
   border-radius: 999px;
   padding: 10px 15px;
   color: #fff;
-}
-
-.site span.events.count.ok {
   background-color: rgba(0, 128, 0, 0.8);
 }
 
