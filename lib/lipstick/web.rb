@@ -24,15 +24,7 @@ module Lipstick
     before do
     end
 
-    not_found do
-      erb :'404'
-    end
-
-    get '/' do
-      erb :index, :locals => {}
-    end
-
-    get '/sites/?' do
+    get '/api/sites/?' do
       if request.xhr?
         content_type 'application/json'
         status 200
@@ -43,7 +35,7 @@ module Lipstick
       end
     end
 
-    post '/sites/?' do
+    post '/api/sites/?' do
       if request.xhr?
         content_type 'application/json'
         status 200
@@ -53,9 +45,8 @@ module Lipstick
       end
     end
 
-    get '/events/?' do
-      status 200
-      erb :events, :locals => { :sites => Site.all }
+    get '/*' do
+      erb :index, :locals => {}
     end
   end
 end
