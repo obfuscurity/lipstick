@@ -16,3 +16,19 @@ div.site {
   background-color: rgba(0, 128, 0, 0.5);
   min-height: 125px;
 }
+
+.site span.name {
+  font-size: 3.0em;
+  font-weight: 200;
+}
+
+.site span.events.count {
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 15px 15px 0;
+  border-radius: 999px;
+  padding: 10px 15px;
+  background-color: #fff;
+}
