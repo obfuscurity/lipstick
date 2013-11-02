@@ -13,7 +13,7 @@ h1 {
 div.site {
   border: 5px solid #fff;
   border-radius: 10px;
-  background-color: rgba(0, 128, 0, 0.5);
+  background-color: rgba(219, 219, 219, 0.5);
   min-height: 125px;
 }
 
@@ -30,5 +30,13 @@ div.site {
   margin: 0 15px 15px 0;
   border-radius: 999px;
   padding: 10px 15px;
-  background-color: #fff;
+  color: #fff;
+}
+
+.site span.events.count.ok {
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+.site span.events.count.critical {
+  background-color: rgba(255, 0, 0, 0.8);
 }
