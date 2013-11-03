@@ -38,7 +38,7 @@ a.site:hover {
   margin: 0 15px 15px 0;
   border-radius: 999px;
   padding: 10px 15px;
-  color: #fff;
+  color: rgb(255, 255, 255);
   background-color: rgba(0, 128, 0, 0.8);
 }
 
