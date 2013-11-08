@@ -28,7 +28,7 @@ module Lipstick
       if request.xhr?
         content_type 'application/json'
         status 200
-        Site.all.to_json
+        Site.sort(:name).all.to_json
       else
         status 200
         erb :sites, :locals => { :sites => Site.all }
