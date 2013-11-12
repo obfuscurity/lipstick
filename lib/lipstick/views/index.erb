@@ -29,6 +29,7 @@
         <div class="container">
           <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span></h1>
 
+          {{#if events.length}}
           <div class="table-responsive">
             <table class="table table-condensed events">
               <thead>
@@ -55,5 +56,8 @@
               </tbody>
             </table>
           </div>
+          {{else}}
+          <h2>All Green!</h2>
+          {{/if}}
         </div>
       </script>
