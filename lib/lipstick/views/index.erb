@@ -27,8 +27,33 @@
 
       <script type="text/x-handlebars" data-template-name="sites/show">
         <div class="container">
-          <h1>Hello from sites-show template {{ id }}</h1>
-          {{ name }}
-          {{ url }}
+          <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span></h1>
+
+          <div class="table-responsive">
+            <table class="table table-condensed events">
+              <thead>
+                <tr>
+                  <th>Host</th>
+                  <th>Service</th>
+                  <th>Acknowledged</th>
+                  <th>Status</th>
+                  <th>Attempts</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each event in events}}
+                <tr>
+                  <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
+                  <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
+                  <td>{{ event.acknowledged }}</td>
+                  <td>{{ event.status }}</td>
+                  <td>{{ event.attempts }}</td>
+                  <td>{{ event.duration }}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
         </div>
       </script>

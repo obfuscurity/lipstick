@@ -10,6 +10,10 @@ h1 {
   font-weight: 100;
 }
 
+h1 span.site.name {
+  font-weight: 200;
+}
+
 div.site {
   border: 5px solid #fff;
   border-radius: 10px;
