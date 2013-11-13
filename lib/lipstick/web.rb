@@ -30,8 +30,7 @@ module Lipstick
         status 200
         Site.sort(:name).all.to_json
       else
-        status 200
-        erb :sites, :locals => { :sites => Site.all }
+        halt 404
       end
     end
 
@@ -48,7 +47,22 @@ module Lipstick
         status 200
         Site.all.to_json
       else
-        redirect '/404'
+        halt 404
+      end
+    end
+
+    delete '/api/sites/:site_id/?' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          Site.find_by_id(params[:site_id]).destroy
+        rescue => e
+          p e.message
+          halt 400
+        end
+        status 204
+      else
+        halt 404
       end
     end
 
