@@ -53,8 +53,24 @@
 
       <script type="text/x-handlebars" data-template-name="sites/show">
         <div class="container">
-          <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span></h1>
-
+          <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span><span class="site destroy" data-toggle="modal" data-target="#deleteSiteModal">&#x2212;</span></h1>
+          <div class="modal fade" id="deleteSiteModal" tabindex="-1" role="dialog" aria-labelledby="deleteSiteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="deleteSiteModalLabel">Delete this Site from Lipstick?</h4>
+                </div>
+                <div class="modal-body">
+                  This change only affects Lipstick, it will not have any affect on your production Nagios instance.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" {{action 'destroySite'}}>Delete Site</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
           {{#if events.length}}
           <div class="table-responsive">
             <table class="table table-condensed events">
