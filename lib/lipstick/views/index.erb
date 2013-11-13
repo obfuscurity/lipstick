@@ -1,3 +1,63 @@
-    <div class="container">
-      <h1>Welcome to Lipstick</h1>
-    </div>
+
+      <script type="text/x-handlebars" data-template-name="application">
+        {{ outlet }}
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="index">
+        <div class="container">
+          <h1>Welcome to Lipstick</h1>
+        </div>
+        {{ outlet }}
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="sites/index">
+        <div class="container">
+          <h1>Nagios Sites</h1>
+          {{#each site in controller}}
+          {{#link-to "sites.show" site.id class="site"}}
+            <div class="col-md-2 col-sm-3 col-xs-4 site">
+              <span class="name">{{ site.name }}</span>
+              <span {{bind-attr class=":events :count site.status"}}>{{ site.events.length }}</span>
+            </div>
+          {{/link-to}}
+          {{/each}}
+        </div>
+        {{ outlet }}
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="sites/show">
+        <div class="container">
+          <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span></h1>
+
+          {{#if events.length}}
+          <div class="table-responsive">
+            <table class="table table-condensed events">
+              <thead>
+                <tr>
+                  <th {{action 'sort' 'host'}}>Host</th>
+                  <th {{action 'sort' 'service'}}>Service</th>
+                  <th {{action 'sort' 'acknowledged'}}>Acknowledged</th>
+                  <th {{action 'sort' 'status'}}>Status</th>
+                  <th {{action 'sort' 'attempts'}}>Attempts</th>
+                  <th {{action 'sort' 'duration'}}>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each event in sortedEvents}}
+                <tr>
+                  <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
+                  <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
+                  <td>{{ event.acknowledged }}</td>
+                  <td>{{ event.status }}</td>
+                  <td>{{ event.attempts }}</td>
+                  <td>{{ event.duration }}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <h2>All Green!</h2>
+          {{/if}}
+        </div>
+      </script>
