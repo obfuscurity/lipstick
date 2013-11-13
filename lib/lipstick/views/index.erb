@@ -12,7 +12,33 @@
 
       <script type="text/x-handlebars" data-template-name="sites/index">
         <div class="container">
-          <h1>Nagios Sites<span class="site add">&#x2b;</span></h1>
+          <h1>Nagios Sites<span class="site add" data-toggle="modal" data-target="#myModal">&#x2b;</span></h1>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Create a New Site</h4>
+                </div>
+                <div class="modal-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="inputName">Name</label>
+                      <input type="text" class="form-control" id="inputName" placeholder="ex: LAX">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputUrl">URL</label>
+                      <input type="text" class="form-control" id="inputUrl" placeholder="ex: http://nagios.lax.example.com/nagios">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
           {{#each site in controller}}
           {{#link-to "sites.show" site.id class="site"}}
             <div class="col-md-2 col-sm-3 col-xs-4 site">
