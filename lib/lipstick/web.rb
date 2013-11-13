@@ -38,6 +38,13 @@ module Lipstick
     post '/api/sites/?' do
       if request.xhr?
         content_type 'application/json'
+        begin
+          site = Site.create({ :name => params['name'], :url  => params['url'] })
+          site.save
+        rescue => e
+          p e.message
+          halt 400
+        end
         status 200
         Site.all.to_json
       else
