@@ -12,7 +12,7 @@
 
       <script type="text/x-handlebars" data-template-name="sites/index">
         <div class="container">
-          <h1>Nagios Sites</h1>
+          <h1>Nagios Sites<span class="site add">&#x2b;</span></h1>
           {{#each site in controller}}
           {{#link-to "sites.show" site.id class="site"}}
             <div class="col-md-2 col-sm-3 col-xs-4 site">
