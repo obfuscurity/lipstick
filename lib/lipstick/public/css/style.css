@@ -10,7 +10,7 @@ h1 {
   font-weight: 100;
 }
 
-h1 span.site.add {
+h1 span.site.add, h1 span.site.destroy {
   float: right;
 }
 
