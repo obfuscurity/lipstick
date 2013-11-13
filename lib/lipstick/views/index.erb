@@ -34,16 +34,16 @@
             <table class="table table-condensed events">
               <thead>
                 <tr>
-                  <th>Host</th>
-                  <th>Service</th>
-                  <th>Acknowledged</th>
-                  <th>Status</th>
-                  <th>Attempts</th>
-                  <th>Duration</th>
+                  <th {{action 'sort' 'host'}}>Host</th>
+                  <th {{action 'sort' 'service'}}>Service</th>
+                  <th {{action 'sort' 'acknowledged'}}>Acknowledged</th>
+                  <th {{action 'sort' 'status'}}>Status</th>
+                  <th {{action 'sort' 'attempts'}}>Attempts</th>
+                  <th {{action 'sort' 'duration'}}>Duration</th>
                 </tr>
               </thead>
               <tbody>
-                {{#each event in events}}
+                {{#each event in sortedEvents}}
                 <tr>
                   <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
                   <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
