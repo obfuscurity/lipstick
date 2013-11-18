@@ -43,7 +43,7 @@
           {{#link-to "sites.show" site.id class="site"}}
             <div class="col-md-2 col-sm-3 col-xs-4 site">
               <span class="name">{{ site.name }}</span>
-              <span {{bind-attr class=":events :count site.status"}}>{{ site.events.length }}</span>
+              <span {{bind-attr class=":events :count site.hardEventsStatus"}}>{{ site.hardEvents.length }}</span>
             </div>
           {{/link-to}}
           {{/each}}
