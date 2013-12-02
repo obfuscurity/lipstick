@@ -5,6 +5,10 @@ div.not_found {
   height: 600px;
 }
 
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  margin-right: 0;
+}
+
 h1 {
   font-size: 4.0em;
   font-weight: 100;
