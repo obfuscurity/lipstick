@@ -27,6 +27,7 @@ div.site {
   border-radius: 10px;
   background-color: rgba(219, 219, 219, 0.5);
   min-height: 125px;
+  overflow: hidden;
 }
 
 a.site {
@@ -56,4 +57,25 @@ a.site:hover {
 
 .site span.events.count.critical {
   background-color: rgba(255, 0, 0, 0.8);
+  padding: 15px 28px;
+  margin: -7px;
+  font-size: 1.9em;
+}
+
+.site span.events.count.critical.large {
+  padding: 25px 30px;
+  margin: -20px -15px;
+  font-size: 2.5em;
+}
+
+.site span.events.count.critical.larger {
+  padding: 30px 35px;
+  margin: -30px -20px;
+  font-size: 2.8em;
+}
+
+.site span.events.count.critical.largest {
+  padding: 35px 40px;
+  margin: -35px -20px;
+  font-size: 3.0em;
 }
