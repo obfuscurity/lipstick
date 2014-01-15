@@ -39,6 +39,8 @@ a.site:hover {
 }
 
 .site span.name {
+  position: inherit;
+  z-index: 100;
   font-size: 3.0em;
   font-weight: 200;
 }
