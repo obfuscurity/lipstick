@@ -24,7 +24,7 @@ rescue
 end
 
 # fetch Events on start (or not)
-Site.update_all unless ENV['EVENTS_UPDATE_ON_BOOT'] == 'false'
+Site.update_all_sites unless ENV['EVENTS_UPDATE_ON_BOOT'] == 'false'
 
 # schedule regular updates for our Events
 require 'rufus/scheduler'
@@ -33,5 +33,5 @@ scheduler = Rufus::Scheduler.new
 interval = ENV['EVENTS_UPDATE_INTERVAL'].nil? ? 60 : ENV['EVENTS_UPDATE_INTERVAL'].to_i
 
 scheduler.every interval do
-  Site.update_all
+  Site.update_all_sites
 end
