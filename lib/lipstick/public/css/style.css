@@ -89,3 +89,19 @@ a.site:hover {
   margin: -35px -20px;
   font-size: 3.0em;
 }
+
+span.event.glyphicon-unchecked {
+  color: green;
+}
+
+span.event.glyphicon-check {
+  color: red;
+}
+
+span.event.glyphicon-time {
+  color: yellow;
+}
+
+span.event.glyphicon-refresh {
+  color: blue;
+}

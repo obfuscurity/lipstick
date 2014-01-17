@@ -76,9 +76,9 @@
             <table class="table table-condensed events">
               <thead>
                 <tr>
+                  <th>Actions</th>
                   <th {{action 'sortEvents' 'host'}}>Host</th>
                   <th {{action 'sortEvents' 'service'}}>Service</th>
-                  <th {{action 'sortEvents' 'acknowledged'}}>Acknowledged</th>
                   <th {{action 'sortEvents' 'status'}}>Status</th>
                   <th {{action 'sortEvents' 'attempts'}}>Attempts</th>
                   <th {{action 'sortEvents' 'duration'}}>Duration</th>
@@ -87,9 +87,14 @@
               <tbody>
                 {{#each event in sortedEvents}}
                 <tr>
+                  <td>
+                    <span class="event acknowledge glyphicon glyphicon-unchecked" {{action 'acknowledgeEvent' event}}></span>
+                    <span class="event acknowledge glyphicon glyphicon-check" {{action 'acknowledgeEvent' event}}></span>
+                    <span class="event downtime glyphicon glyphicon-time" {{action 'downtimeEvent' event}}></span>
+                    <span class="event check glyphicon glyphicon-refresh" {{action 'checkEvent' event}}></span>
+                  </td>
                   <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
                   <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
-                  <td>{{ event.acknowledged }}</td>
                   <td>{{ event.status }}</td>
                   <td>{{ event.attempts }}</td>
                   <td>{{ event.duration }}</td>
