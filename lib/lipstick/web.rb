@@ -51,6 +51,70 @@ module Lipstick
       end
     end
 
+    post '/api/sites/:site_id/events/:event_id/acknowledge' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          event = Event.filter(:id => params[:event_id]).first
+          event.acknowledge
+          status 204
+        rescue => e
+          p e.message
+          halt 400
+        end
+      else
+        halt 404
+      end
+    end
+
+    delete '/api/sites/:site_id/events/:event_id/acknowledge' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          event = Event.filter(:id => params[:event_id]).first
+          event.remove_acknowledgement
+          status 204
+        rescue => e
+          p e.message
+          halt 400
+        end
+      else
+        halt 404
+      end
+    end
+
+    post '/api/sites/:site_id/events/:event_id/downtime/:duration' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          event = Event.filter(:id => params[:event_id]).first
+          event.schedule_downtime(params[:duration])
+          status 204
+        rescue => e
+          p e.message
+          halt 400
+        end
+      else
+        halt 404
+      end
+    end
+
+    post '/api/sites/:site_id/events/:event_id/check' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          event = Event.filter(:id => params[:event_id]).first
+          event.reschedule_check
+          status 204
+        rescue => e
+          p e.message
+          halt 400
+        end
+      else
+        halt 404
+      end
+    end
+
     delete '/api/sites/:site_id/?' do
       if request.xhr?
         content_type 'application/json'
