@@ -90,18 +90,31 @@ a.site:hover {
   font-size: 3.0em;
 }
 
+span.event.glyphicon {
+  margin: 0 5px;
+}
+
 span.event.glyphicon-unchecked {
-  color: green;
+  color: rgb(122, 184, 122);
 }
 
 span.event.glyphicon-check {
-  color: red;
+  color: rgb(199, 77, 77);
 }
 
 span.event.glyphicon-time {
-  color: yellow;
+  color: rgb(168, 168, 168);
+}
+
+span.event.glyphicon-time:hover {
+  color: rgb(189, 118, 196);
 }
 
 span.event.glyphicon-refresh {
-  color: blue;
+  //color: rgb(189, 118, 196);
+  color: rgb(168, 168, 168);
+}
+
+span.event.glyphicon-refresh:hover {
+  color: rgb(189, 118, 196);
 }

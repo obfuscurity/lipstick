@@ -78,7 +78,7 @@
                 <tr>
                   <th>Actions</th>
                   <th {{action 'sortEvents' 'host'}}>Host</th>
-                  <th {{action 'sortEvents' 'service'}}>Service</th>
+                  <th {{action 'sortEvents' 'service'}}>Alert</th>
                   <th {{action 'sortEvents' 'status'}}>Status</th>
                   <th {{action 'sortEvents' 'attempts'}}>Attempts</th>
                   <th {{action 'sortEvents' 'duration'}}>Duration</th>
@@ -88,8 +88,7 @@
                 {{#each event in sortedEvents}}
                 <tr>
                   <td>
-                    <span class="event acknowledge glyphicon glyphicon-unchecked" {{action 'acknowledgeEvent' event}}></span>
-                    <span class="event acknowledge glyphicon glyphicon-check" {{action 'acknowledgeEvent' event}}></span>
+                    <span {{bind-attr class=":event :acknowledge :glyphicon event.acknowledged:glyphicon-check:glyphicon-unchecked"}} {{action 'toggleAcknowledgeEvent' event}}></span>
                     <span class="event downtime glyphicon glyphicon-time" {{action 'downtimeEvent' event}}></span>
                     <span class="event check glyphicon glyphicon-refresh" {{action 'checkEvent' event}}></span>
                   </td>
