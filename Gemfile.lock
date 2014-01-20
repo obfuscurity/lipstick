@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/railsmachine/nagiosharder.git
-  revision: 993bf6de688a68fb605648b7fbd3459e0d6ac402
-  ref: 993bf6de68
+  revision: 8ce44b1701d1fce7b0d0999f19245c04c51a4f30
+  ref: 8ce44b1701
   specs:
     nagiosharder (0.5.0.rc2)
       activesupport
