@@ -24,12 +24,15 @@ class Site
   end
 
   def update_events
-    p "DEBUG: updating events for site #{self.name}"
-    nagios = NagiosHarder::Site.new("#{self.url}/cgi-bin/", ENV['NAGIOS_USER'], ENV['NAGIOS_PASS'])
+    nagios = NagiosHarder::Site.new "#{self.url}/cgi-bin/",
+      ENV['NAGIOS_USER'],
+      ENV['NAGIOS_PASS'],
+      ENV['NAGIOS_VERSION'].to_i,
+      ENV['NAGIOS_DATE_FORMAT']
     begin
       if ! Site.find_by_id(self.id).nil?
         self.events.clear unless self.events.empty?
-        nagios.service_status(:critical).each do |problem|
+        nagios.service_status(:service_status_types => [:critical]).each do |problem|
           self.events << Event.new(problem.to_hash)
         end
         self.save
