@@ -8,6 +8,11 @@ if ENV['SSL_VERSION']
   OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:ssl_version] = ENV['SSL_VERSION']
 end
 
+# allow user to override VERIFY_NONE for hostname mismatch
+if ENV['SSL_VERIFY_NONE']
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+end
+
 # grab the MongoDB URI for our connection
 begin
   uri = URI.parse(ENV['MONGODB_URI'])
