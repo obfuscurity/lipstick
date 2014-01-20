@@ -55,8 +55,8 @@ module Lipstick
       if request.xhr?
         content_type 'application/json'
         begin
-          event = Event.filter(:id => params[:event_id]).first
-          event.acknowledge
+          event = Event.find({ :site_id => params[:site_id], :event_id => params[:event_id] })
+          event.acknowledge({ :site_id => params[:site_id], :comment => 'test comment', :author => 'lipstick' })
           status 204
         rescue => e
           p e.message
