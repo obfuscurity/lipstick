@@ -19,33 +19,41 @@ class Event
   key :extra_service_notes_url, String
   key :notifications_disabled, Boolean
 
-  nagios_api_url = ENV['NAGIOS_API_URL']
+
+  def self.find(options)
+    Site.find(options[:site_id]).events.each do |event|
+      return event if event.id.to_s.eql?(options[:event_id])
+    end
+    return
+  end
 
   def acknowledge(options)
-    self.acknowledged = true
-    self.save
     begin
-      RestClient.post "#{nagios_api_url}/acknowledge",
-      {
-        :host => self.host,
-        :service => self.service,
-        :comment => options[:comment],
-        :author => options[:author]
-      }
+      self.acknowledged = true
+      self.save
+      nagios_api_url = Site.find(options[:site_id]).nagios_api_url
+      RestClient.post "#{nagios_api_url}/acknowledge_problem",
+        {
+          :host => self.host,
+          :service => self.service,
+          :comment => options[:comment],
+          :author => options[:author]
+        }.to_json, :content_type => :json
     rescue => e
       raise e.message
     end
   end
 
   def remove_acknowledgement
-    self.acknowledged = false
-    self.save
     begin
+      self.acknowledged = false
+      self.save
+      nagios_api_url = Site.find(options[:site_id]).nagios_api_url
       RestClient.post "#{nagios_api_url}/remove_acknowledgement",
-      {
-        :host => self.host,
-        :service => self.service
-      }
+        {
+          :host => self.host,
+          :service => self.service
+        }.to_json, :content_type => :json
     rescue => e
       raise e.message
     end
