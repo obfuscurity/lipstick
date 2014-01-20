@@ -80,6 +80,7 @@
                   <th {{action 'sortEvents' 'host'}}>Host</th>
                   <th {{action 'sortEvents' 'service'}}>Alert</th>
                   <th {{action 'sortEvents' 'status'}}>Status</th>
+                  <th {{action 'sortEvents' 'last_check'}}>Last Check</th>
                   <th {{action 'sortEvents' 'attempts'}}>Attempts</th>
                   <th {{action 'sortEvents' 'duration'}}>Duration</th>
                 </tr>
@@ -95,6 +96,7 @@
                   <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
                   <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
                   <td>{{ event.status }}</td>
+                  <td>{{ event.last_check }}</td>
                   <td>{{ event.attempts }}</td>
                   <td>{{ event.duration }}</td>
                 </tr>

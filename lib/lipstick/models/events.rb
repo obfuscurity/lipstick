@@ -63,6 +63,20 @@ class Event
     # duration in seconds
   end
 
-  def reschedule_check
+  def remove_downtime
+  end
+
+  def schedule_check(options)
+    begin
+      nagios_api_url = Site.find(options[:site_id]).nagios_api_url
+      RestClient.post "#{nagios_api_url}/schedule_check",
+        {
+          :host => self.host,
+          :service => self.service,
+          :forced => 1
+        }.to_json, :content_type => :json
+    rescue => e
+      raise e.message
+    end
   end
 end

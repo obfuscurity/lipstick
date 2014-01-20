@@ -103,8 +103,8 @@ module Lipstick
       if request.xhr?
         content_type 'application/json'
         begin
-          event = Event.filter(:id => params[:event_id]).first
-          event.reschedule_check
+          event = Event.find({ :site_id => params[:site_id], :event_id => params[:event_id] })
+          event.schedule_check({ :site_id => params[:site_id] })
           status 204
         rescue => e
           p e.message
