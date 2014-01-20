@@ -12,6 +12,10 @@ class Site
 
   timestamps!
 
+  def nagios_api_url
+    "http://#{URI.parse(self.url).host}:6315"
+  end
+
   def update_new_site
     scheduler = Rufus::Scheduler.new
     scheduler.in '1s' do
