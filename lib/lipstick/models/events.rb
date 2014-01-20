@@ -44,7 +44,7 @@ class Event
     end
   end
 
-  def remove_acknowledgement
+  def remove_acknowledgement(options)
     begin
       self.acknowledged = false
       self.save
