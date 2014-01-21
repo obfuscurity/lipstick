@@ -59,8 +59,32 @@ class Event
     end
   end
 
-  def schedule_downtime(duration)
-    # duration in seconds
+  def schedule_downtime(options)
+    begin
+      nagios_api_url = Site.find(options[:site_id]).nagios_api_url
+      RestClient.post "#{nagios_api_url}/schedule_downtime",
+        {
+          :host => self.host,
+          :service => self.service,
+          :duration => options[:duration],
+          :comment => options[:comment]
+        }.to_json, :content_type => :json
+    rescue => e
+      raise e.message
+    end
+  end
+
+  def cancel_downtime(options)
+    begin
+      nagios_api_url = Site.find(options[:site_id]).nagios_api_url
+      RestClient.post "#{nagios_api_url}/cancel_downtime",
+        {
+          :host => self.host,
+          :service => self.service
+        }.to_json, :content_type => :json
+    rescue => e
+      raise e.message
+    end
   end
 
   def remove_downtime

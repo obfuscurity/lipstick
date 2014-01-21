@@ -90,7 +90,7 @@
                 <tr>
                   <td>
                     <span {{bind-attr class=":event :acknowledge :glyphicon event.acknowledged:glyphicon-check:glyphicon-unchecked"}} {{action 'toggleAcknowledgeEvent' event}}></span>
-                    <span class="event downtime glyphicon glyphicon-time" {{action 'downtimeEvent' event}}></span>
+                    <span {{bind-attr class=":event :downtime :glyphicon :glyphicon-time event.downtime:enabled:disabled"}} {{action 'toggleDowntimeEvent' event}}></span>
                     <span class="event check glyphicon glyphicon-refresh" {{action 'checkEvent' event}}></span>
                   </td>
                   <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>

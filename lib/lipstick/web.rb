@@ -83,12 +83,30 @@ module Lipstick
       end
     end
 
-    post '/api/sites/:site_id/events/:event_id/downtime/:duration' do
+    post '/api/sites/:site_id/events/:event_id/downtime' do
       if request.xhr?
         content_type 'application/json'
         begin
-          event = Event.filter(:id => params[:event_id]).first
-          event.schedule_downtime(params[:duration])
+          duration = params[:duration] || 300
+          comment = params[:comment] || 'hello world'
+          event = Event.find({ :site_id => params[:site_id], :event_id => params[:event_id] })
+          event.schedule_downtime({ :site_id => params[:site_id], :event_id => params[:event_id], :duration => duration, :comment => comment })
+          status 204
+        rescue => e
+          p e.message
+          halt 400
+        end
+      else
+        halt 404
+      end
+    end
+
+    delete '/api/sites/:site_id/events/:event_id/downtime' do
+      if request.xhr?
+        content_type 'application/json'
+        begin
+          event = Event.find({ :site_id => params[:site_id], :event_id => params[:event_id] })
+          event.cancel_downtime({ :site_id => params[:site_id], :event_id => params[:event_id] })
           status 204
         rescue => e
           p e.message

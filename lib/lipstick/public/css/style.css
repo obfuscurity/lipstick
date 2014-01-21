@@ -103,16 +103,15 @@ span.event.glyphicon-check {
 }
 
 span.event.glyphicon-time {
-  color: rgb(168, 168, 168);
+  color: rgba(168, 168, 168, 0.4);
 }
 
-span.event.glyphicon-time:hover {
+span.event.glyphicon-time:hover, span.event.glyphicon-time.enabled {
   color: rgb(189, 118, 196);
 }
 
 span.event.glyphicon-refresh {
-  //color: rgb(189, 118, 196);
-  color: rgb(168, 168, 168);
+  color: rgba(168, 168, 168, 0.4);
 }
 
 span.event.glyphicon-refresh:hover {
