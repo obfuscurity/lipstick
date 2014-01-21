@@ -87,14 +87,14 @@ module Lipstick
       if request.xhr?
         content_type 'application/json'
         begin
-          duration = params[:duration] || 300
-          comment = params[:comment] || 'hello world'
+          duration = params[:duration] || raise('missing duration')
+          comment = params[:comment] || raise('missing comment')
           event = Event.find({ :site_id => params[:site_id], :event_id => params[:event_id] })
           event.schedule_downtime({ :site_id => params[:site_id], :event_id => params[:event_id], :duration => duration, :comment => comment })
           status 204
         rescue => e
           p e.message
-          halt 400
+          halt 400, {:error => e.message}.to_json
         end
       else
         halt 404
