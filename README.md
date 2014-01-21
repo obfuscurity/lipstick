@@ -1,6 +1,8 @@
 Lipstick
 ========
 
+![screenshot](https://github.com/obfuscurity/lipstick/raw/master/lib/lipstick/public/img/screenshot.png "Lipstick")
+
 ## Overview
 
 Lipstick is a unified dashboard for collecting and presenting Nagios activity across multiple sites. It uses a MongoDB database for storing Nagios site configuration and event data.
