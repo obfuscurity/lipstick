@@ -38,7 +38,7 @@ It's suggested that you keep separate `.env` and `.env-production` files for dev
 
 ```bash
 $ heroku create
-$ for var in ``cat .env.production``; do heroku config:set $var; done
+$ for var in `cat .env.production`; do heroku config:set $var; done
 $ heroku addons:add mongohq
 $ heroku config:set MONGODB_URI=`heroku config:get MONGOHQ_URL`
 $ git push heroku master
