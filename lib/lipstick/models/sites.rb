@@ -24,6 +24,8 @@ class Site
   end
 
   def update_events
+    p "updating site data for #{self.name}" if !ENV['LIPSTICK_DEBUG'].nil?
+
     nagios = NagiosHarder::Site.new "#{self.url}/cgi-bin/",
       ENV['NAGIOS_USER'],
       ENV['NAGIOS_PASS'],
