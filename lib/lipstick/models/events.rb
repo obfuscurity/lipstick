@@ -29,8 +29,6 @@ class Event
 
   def acknowledge(options)
     begin
-      self.acknowledged = true
-      self.save
       nagios_api_url = Site.find(options[:site_id]).nagios_api_url
       RestClient.post "#{nagios_api_url}/acknowledge_problem",
         {
@@ -39,6 +37,8 @@ class Event
           :comment => options[:comment],
           :author => options[:author]
         }.to_json, :content_type => :json
+      self.acknowledged = true
+      self.save
     rescue => e
       raise e.message
     end
@@ -46,14 +46,14 @@ class Event
 
   def remove_acknowledgement(options)
     begin
-      self.acknowledged = false
-      self.save
       nagios_api_url = Site.find(options[:site_id]).nagios_api_url
       RestClient.post "#{nagios_api_url}/remove_acknowledgement",
         {
           :host => self.host,
           :service => self.service
         }.to_json, :content_type => :json
+      self.acknowledged = false
+      self.save
     rescue => e
       raise e.message
     end
@@ -67,8 +67,11 @@ class Event
           :host => self.host,
           :service => self.service,
           :duration => options[:duration],
-          :comment => options[:comment]
+          :comment => options[:comment],
+          :author => options[:author]
         }.to_json, :content_type => :json
+      self.downtime = true
+      self.save
     rescue => e
       raise e.message
     end
@@ -82,12 +85,11 @@ class Event
           :host => self.host,
           :service => self.service
         }.to_json, :content_type => :json
+      self.downtime = false
+      self.save
     rescue => e
       raise e.message
     end
-  end
-
-  def remove_downtime
   end
 
   def schedule_check(options)
