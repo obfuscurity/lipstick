@@ -71,6 +71,32 @@
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
+          <div class="modal fade" id="addDowntimeModal" tabindex="-1" role="dialog" aria-labelledby="addDowntimeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="addDowntimeModalLabel">Set downtime for <span class="text-primary">{{currentDowntimeEvent.host}} {{currentDowntimeEvent.service}}</span></h4>
+                </div>
+                <div class="modal-body">
+                  <form class="downtime" role="form">
+                    <div class="form-group">
+                      <label for="downtimeDuration">Duration</label>
+                      {{input class="form-control" id="downtimeDuration" value=currentDowntimeEvent.downtimeDuration}}
+                    </div>
+                    <div class="form-group">
+                      <label for="comment">Comment</label>
+                      {{input class="form-control" id="comment" value=currentDowntimeEvent.comment placeholder="Insert comment here"}}
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" {{action 'downtimeEvent' currentDowntimeEvent}}>Schedule Downtime</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
           {{#if events.length}}
           <div class="table-responsive">
             <table class="table table-condensed events">
