@@ -35,6 +35,7 @@ class Site
       if ! Site.find_by_id(self.id).nil?
         self.events.clear unless self.events.empty?
         nagios.service_status(:service_status_types => [:critical]).each do |problem|
+          problem.attempts = problem.attempts.match(/\d+\/\d+/).to_s
           self.events << Event.new(problem.to_hash)
         end
         self.save
