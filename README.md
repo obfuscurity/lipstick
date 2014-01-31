@@ -2,6 +2,7 @@ Lipstick
 ========
 
 ![screenshot](https://github.com/obfuscurity/lipstick/raw/master/lib/lipstick/public/img/screenshot.png "Lipstick")
+![screenshot](https://github.com/obfuscurity/lipstick/raw/master/lib/lipstick/public/img/screenshot-site.png "Lipstick Site")
 
 ## Overview
 
