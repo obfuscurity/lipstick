@@ -120,9 +120,9 @@
                 {{#each event in sortedEvents}}
                 <tr>
                   <td>
-                    <span {{bind-attr class=":event :acknowledge :glyphicon event.acknowledged:glyphicon-check:glyphicon-unchecked"}} {{action 'toggleAcknowledgeEvent' event}}></span>
-                    <span {{bind-attr class=":event :downtime :glyphicon :glyphicon-time event.downtime:enabled:disabled"}} {{action 'toggleDowntimeEvent' event}}></span>
-                    <span class="event check glyphicon glyphicon-refresh" {{action 'checkEvent' event}}></span>
+                    <span {{bind-attr class=":event :acknowledge :glyphicon event.acknowledged:glyphicon-check:glyphicon-unchecked"}} {{action 'toggleAcknowledgeEvent' event}} title="Acknowledge"></span>
+                    <span {{bind-attr class=":event :downtime :glyphicon :glyphicon-time event.downtime:enabled:disabled"}} {{action 'toggleDowntimeEvent' event}} title="Downtime"></span>
+                    <span class="event check glyphicon glyphicon-refresh" {{action 'checkEvent' event}} title="Reschedule Check"></span>
                   </td>
                   <td><a href="{{unbound event.host_extinfo_url}}" target="_new">{{ event.host }}</a></td>
                   <td><a href="{{unbound event.service_extinfo_url}}" target="_new">{{ event.service }}</a></td>
