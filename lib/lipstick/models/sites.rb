@@ -33,13 +33,11 @@ class Site
       ENV['NAGIOS_DATE_FORMAT']
     begin
       if ! Site.find_by_id(self.id).nil?
-        new_events = []
+        self.events.clear unless self.events.empty?
         nagios.service_status(:service_status_types => [:critical]).each do |problem|
           problem.attempts = problem.attempts.match(/\d+\/\d+/).to_s
-          new_events << Event.new(problem.to_hash)
+          self.events << Event.new(problem.to_hash)
         end
-        self.events.clear
-        self.events << new_events
         self.save
       end
     rescue => e

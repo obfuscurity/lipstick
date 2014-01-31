@@ -22,7 +22,8 @@ end
 
 # connect to our MongoDB
 begin
-  MongoMapper.connection = Mongo::Connection.new(uri.host)
+  pool_size = ENV['MONGODB_POOL_SIZE'] || 1
+  MongoMapper.connection = Mongo::Connection.new(uri.host, { :pool_size => pool_size.to_i })
   MongoMapper.database = uri.path.gsub(/^\//,'')
 rescue
   raise 'Unable to connect to MONGODB_URI, aborting.'
