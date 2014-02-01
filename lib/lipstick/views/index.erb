@@ -56,7 +56,7 @@
           <h1>Nagios Site &#47;&#47; <span class="site name">{{ name }}</span><span class="site destroy" data-toggle="modal" data-target="#deleteSiteModal">&#xD7;</span></h1>
           {{#if alerts.length}}
           {{#each alert in alerts}}
-          {{bs-alert message=alert.message type=alert.type dismissAfter=alert.duration fade=true}}
+          {{bs-alert message=alert.message type=alert.type dismissAfter=alert.duration fade=true closed="removeAlert"}}
           {{/each}}
           {{/if}}
           <div class="modal fade" id="deleteSiteModal" tabindex="-1" role="dialog" aria-labelledby="deleteSiteModalLabel" aria-hidden="true">
