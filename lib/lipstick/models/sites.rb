@@ -53,11 +53,8 @@ class Site
   end
 
   def self.update_all_sites
-    scheduler = Rufus::Scheduler.new
     Site.all.each do |site|
-      scheduler.in '1s' do
-        site.update_events
-      end
+      site.update_events
     end
   end
 end
